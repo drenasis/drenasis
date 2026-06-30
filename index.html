@@ -486,6 +486,132 @@
   .bf-text h3{font-size:1.05rem; margin-top:8px; margin-bottom:8px;}
   .bf-text p{color:var(--mute); font-size:0.88rem;}
 
+  /* ---------- pricing ---------- */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .price-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:34px 30px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .price-card.featured{
+    border-color:var(--orange);
+    background:linear-gradient(180deg, rgba(247,135,25,0.06), transparent 40%);
+  }
+  .price-badge{
+    position:absolute;
+    top:-13px;
+    left:30px;
+    background:var(--orange);
+    color:var(--navy-deep);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:5px;
+  }
+  .price-tier{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--blue-soft);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:14px;
+  }
+  .price-amount{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2.4rem;
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .price-amount sup{
+    font-size:1.1rem;
+    font-weight:600;
+    margin-right:2px;
+    top:-0.9em;
+  }
+  .price-scope{
+    color:var(--mute-dim);
+    font-size:0.88rem;
+    margin-bottom:24px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .price-features{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    margin-bottom:28px;
+    flex-grow:1;
+  }
+  .price-features li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:0.92rem;
+    color:var(--mute);
+  }
+  .price-features li::before{
+    content:"✓";
+    color:var(--orange);
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    flex-shrink:0;
+  }
+  .price-card .btn{
+    justify-content:center;
+    width:100%;
+  }
+
+  .extras-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:40px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .extras-table thead tr{
+    background:var(--navy-panel);
+    border-bottom:1px solid var(--line);
+  }
+  .extras-table th{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--mute-dim);
+    padding:14px 22px;
+    text-align:left;
+  }
+  .extras-table td{
+    padding:14px 22px;
+    font-size:0.92rem;
+    color:var(--mute);
+    border-top:1px solid var(--line);
+  }
+  .extras-table td:last-child{
+    color:var(--orange);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .extras-table tbody tr:hover td{
+    background:var(--navy-panel);
+  }
+  @media (max-width: 920px){
+    .pricing-grid{grid-template-columns:1fr;}
+  }
+
   /* ---------- cta ---------- */
   .cta-section{
     background:linear-gradient(135deg, var(--navy-panel), var(--navy-deep));
@@ -578,6 +704,7 @@
       <a href="#process">Process</a>
       <a href="#why">Why Drenasis</a>
       <a href="#built-for">Work</a>
+      <a href="#pricing">Pricing</a>
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-fill">Hire me on Fiverr</a>
@@ -794,6 +921,109 @@
     </div>
   </section>
 
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Packages &amp; pricing</p>
+        <h2>Simple, transparent pricing.</h2>
+        <p>No hidden fees, no ongoing subscriptions. Pick the package that fits your project and I'll deliver a site you're proud of.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- BASIC -->
+        <div class="price-card reveal">
+          <p class="price-tier">Basic</p>
+          <div class="price-amount"><sup>£</sup>50</div>
+          <p class="price-scope">Perfect for creators, portfolios &amp; simple business websites</p>
+          <ul class="price-features">
+            <li>1-page website</li>
+            <li>Modern responsive design</li>
+            <li>Mobile &amp; desktop compatible</li>
+            <li>Contact section or contact form</li>
+            <li>Social media links</li>
+            <li>1 revision</li>
+            <li>Delivery within 5–7 days</li>
+          </ul>
+          <a href="#" class="btn btn-outline">Get started →</a>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="price-card featured reveal">
+          <span class="price-badge">Most popular</span>
+          <p class="price-tier">Standard</p>
+          <div class="price-amount"><sup>£</sup>75</div>
+          <p class="price-scope">Ideal for small businesses wanting a more detailed online presence</p>
+          <ul class="price-features">
+            <li>Up to 3 pages</li>
+            <li>Modern responsive design</li>
+            <li>Mobile &amp; desktop compatible</li>
+            <li>Contact form</li>
+            <li>Social media integration</li>
+            <li>Domain setup assistance</li>
+            <li>2 revisions</li>
+            <li>Delivery within 5–7 days</li>
+          </ul>
+          <a href="#" class="btn btn-fill">Get started →</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="price-card reveal">
+          <p class="price-tier">Premium</p>
+          <div class="price-amount"><sup>£</sup>100</div>
+          <p class="price-scope">Best for businesses &amp; creators who need a fully customised website</p>
+          <ul class="price-features">
+            <li>Up to 5 pages</li>
+            <li>Modern responsive design</li>
+            <li>Mobile &amp; desktop compatible</li>
+            <li>Contact form</li>
+            <li>Social media integration</li>
+            <li>Domain setup assistance</li>
+            <li>Basic SEO setup</li>
+            <li>Enhanced animations &amp; customisation</li>
+            <li>3 revisions</li>
+            <li>Delivery within 7–14 days</li>
+          </ul>
+          <a href="#" class="btn btn-outline">Get started →</a>
+        </div>
+
+      </div>
+
+      <!-- EXTRAS -->
+      <table class="extras-table reveal">
+        <thead>
+          <tr>
+            <th>Additional service</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Extra page</td>
+            <td>£15</td>
+          </tr>
+          <tr>
+            <td>Priority delivery</td>
+            <td>£20</td>
+          </tr>
+          <tr>
+            <td>Additional revision</td>
+            <td>£10</td>
+          </tr>
+          <tr>
+            <td>Website updates</td>
+            <td>From £10</td>
+          </tr>
+          <tr>
+            <td>Domain purchase &amp; setup assistance</td>
+            <td>Upon request</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
   <section id="contact">
     <div class="cta-section reveal">
       <div class="cta-inner">
@@ -827,6 +1057,7 @@
           <a href="#process">Process</a>
           <a href="#why">Why Drenasis</a>
           <a href="#built-for">Work</a>
+          <a href="#pricing">Pricing</a>
         </div>
         <div class="footer-col">
           <h4>Start a project</h4>
