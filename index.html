@@ -25,14 +25,22 @@
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
+  *::before,
+  *::after{box-sizing:inherit;}
 
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    width:100%;
+    overflow-x:hidden;
+  }
 
   body{
     background:var(--navy);
     color:var(--ink);
     font-family:'Inter', sans-serif;
     line-height:1.6;
+    width:100%;
+    min-width:0;
     overflow-x:hidden;
   }
 
@@ -70,9 +78,11 @@
   }
 
   .wrap{
+    width:100%;
     max-width:1180px;
     margin:0 auto;
     padding:0 32px;
+    min-width:0;
   }
 
   a{color:inherit; text-decoration:none;}
@@ -120,6 +130,8 @@
     align-items:center;
     justify-content:space-between;
     height:78px;
+    width: 100%;
+    
   }
   .brand{
     display:flex;
@@ -157,12 +169,41 @@
     color:var(--ink);
     font-size:1.1rem;
     cursor:pointer;
+    flex-shrink:0;
+  }
+
+  /* ---------- mobile menu ---------- */
+  .mobile-menu{
+    display:flex;
+    flex-direction:column;
+    background:var(--navy-panel);
+    border-top:1px solid var(--line);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .mobile-menu.open{
+    max-height:420px;
+  }
+  .mobile-menu a{
+    padding:16px 32px;
+    border-bottom:1px solid var(--line);
+    color:var(--mute);
+    font-size:0.98rem;
+  }
+  .mobile-menu a:hover{color:var(--ink);}
+  .mobile-menu a.btn{
+    margin:16px 32px;
+    justify-content:center;
+    border-bottom:none;
+    padding:14px 26px;
   }
 
   /* ---------- HERO ---------- */
   .hero{
     padding:90px 0 70px;
     position:relative;
+    overflow:hidden;
   }
   .hero::before{
     content:"";
@@ -174,7 +215,7 @@
   }
   .hero-grid{
     display:grid;
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0, 1fr);
     gap:50px;
     position:relative;
   }
@@ -200,115 +241,7 @@
     gap:16px;
   }
 
-  /* ---------- device frame (signature element) ---------- */
-  .frame-stage{
-    margin-top:54px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-  }
-  .frame-label{
-    font-size:0.78rem;
-    color:var(--mute-dim);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .frame-label .dot{
-    width:7px; height:7px; border-radius:50%;
-    background:var(--orange);
-  }
 
-  .device-frame{
-    width:1180px;
-    max-width:100%;
-    background:var(--navy-panel);
-    border:1px solid var(--line);
-    border-radius:12px;
-    overflow:hidden;
-    container-type:inline-size;
-    container-name:frame;
-    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
-  }
-
-  .frame-chrome{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    padding:11px 16px;
-    border-bottom:1px solid var(--line);
-  }
-  .frame-chrome span{
-    width:8px; height:8px; border-radius:50%;
-    background:rgba(238,244,248,0.18);
-  }
-  .frame-chrome .url{
-    margin-left:14px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.7rem;
-    color:var(--mute-dim);
-  }
-
-  .frame-body{
-    padding:26px;
-  }
-  .frame-nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:18px;
-  }
-  .frame-nav .fn-logo{
-    width:18px; height:18px;
-    background:var(--blue);
-    border-radius:4px;
-  }
-  .frame-nav .fn-links{
-    display:flex;
-    gap:16px;
-  }
-  .frame-nav .fn-links span{
-    width:34px; height:6px;
-    border-radius:3px;
-    background:rgba(238,244,248,0.16);
-  }
-  @container frame (max-width: 380px){
-    .frame-nav .fn-links{display:none;}
-  }
-
-  .frame-content{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:14px;
-  }
-  @container frame (max-width: 780px){
-    .frame-content{grid-template-columns:repeat(2, 1fr);}
-  }
-  @container frame (max-width: 380px){
-    .frame-content{grid-template-columns:1fr;}
-  }
-  .fc-card{
-    aspect-ratio:4/3;
-    border-radius:8px;
-    background:linear-gradient(135deg, rgba(0,98,157,0.5), rgba(7,34,51,0.2));
-    border:1px solid var(--line);
-    position:relative;
-  }
-  .fc-card:nth-child(2){background:linear-gradient(135deg, rgba(247,135,25,0.35), rgba(7,34,51,0.2));}
-  .fc-card:nth-child(3){display:block;}
-  @container frame (max-width: 780px){
-    .fc-card:nth-child(3){display:none;}
-  }
-
-  /* breakpoint readout */
-  .bp-readout{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.78rem;
-    color:var(--blue-soft);
-  }
-
-  /* ---------- stats bar ---------- */
   .stats{
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
@@ -317,7 +250,7 @@
   }
   .stats .wrap{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(4, minmax(0, 1fr));
     gap:24px;
   }
   .stat-item{text-align:center;}
@@ -354,7 +287,7 @@
   /* ---------- services ---------- */
   .services-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:1px;
     background:var(--line);
     border:1px solid var(--line);
@@ -389,7 +322,7 @@
   /* ---------- why ---------- */
   .why-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:28px;
   }
   .why-card{
@@ -427,7 +360,7 @@
   }
   .process-item{
     display:grid;
-    grid-template-columns:90px 1fr 1fr;
+    grid-template-columns:90px minmax(0, 1fr) minmax(0, 1fr);
     gap:24px;
     align-items:start;
     padding:32px 0;
@@ -444,7 +377,7 @@
   /* ---------- built for ---------- */
   .builtfor-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(3, minmax(0, 1fr));
     gap:24px;
   }
   .bf-card{
@@ -489,7 +422,7 @@
   /* ---------- pricing ---------- */
   .pricing-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(3, minmax(0, 1fr));
     gap:24px;
   }
   .price-card{
@@ -574,6 +507,7 @@
 
   .extras-table{
     width:100%;
+    max-width:100%;
     border-collapse:collapse;
     margin-top:40px;
     border:1px solid var(--line);
@@ -679,15 +613,82 @@
     .services-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
     .builtfor-grid{grid-template-columns:1fr;}
-    .stats .wrap{grid-template-columns:repeat(2, 1fr);}
-    .process-item{grid-template-columns:50px 1fr; }
+    .stats .wrap{grid-template-columns:repeat(2, minmax(0, 1fr));}
+    .process-item{grid-template-columns:50px minmax(0, 1fr); }
     .process-item p{grid-column:2 / 3;}
+    .hero-grid{gap:40px;}
   }
+
   @media (max-width: 760px){
+    .wrap{padding:0 22px;}
+    nav.wrap{height:66px;}
     .nav-links{display:none;}
+    .nav-cta .btn{display:none;}
     .menu-toggle{display:block;}
-    section{padding:76px 0;}
-    .cta-section{margin:0 16px; padding:50px 26px;}
+    .mobile-menu{display:flex;}
+    .hero{padding:50px 0 40px;}
+    .hero-cta{gap:12px;}
+    .hero-cta .btn{flex:1 1 auto; justify-content:center;}
+    .stats{margin-top:50px; padding:26px 0;}
+    section{padding:64px 0;}
+    .section-head{margin-bottom:38px;}
+    .service-card{padding:28px 24px;}
+    .why-card{padding:26px 22px;}
+    .process-item{padding:24px 0;}
+    .builtfor-grid{gap:18px;}
+    .price-card{padding:28px 24px;}
+    .pricing-grid{gap:18px;}
+    .extras-table{font-size:0.9rem;}
+    .extras-table th, .extras-table td{padding:12px 14px;}
+    .cta-section{margin:0 16px; padding:44px 24px;}
+    .cta-btns{flex-direction:column; align-items:stretch;}
+    .cta-btns .btn{justify-content:center;}
+    footer{padding:40px 0 28px;}
+    .footer-top{gap:26px;}
+    .footer-links{gap:32px;}
+  }
+
+  @media (max-width: 480px){
+    .wrap{padding:0 18px;}
+    .brand-name{font-size:1.05rem;}
+    .hero h1{font-size:clamp(1.9rem, 8vw, 2.4rem);}
+    .hero p.lead{font-size:1rem;}
+    .eyebrow{font-size:0.7rem;}
+    .stats .wrap{grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px;}
+    .stat-item .num{font-size:1.4rem;}
+    .section-head h2{font-size:1.5rem;}
+    .process-item{grid-template-columns:1fr; gap:8px;}
+    .process-item p{grid-column:1 / 2;}
+    .price-amount{font-size:2rem;}
+    .extras-table,
+    .extras-table thead,
+    .extras-table tbody,
+    .extras-table tr,
+    .extras-table th,
+    .extras-table td{display:block;}
+    .extras-table{overflow:hidden; white-space:normal;}
+    .extras-table thead{display:none;}
+    .extras-table tr{border-top:1px solid var(--line);}
+    .extras-table tbody tr:first-child{border-top:none;}
+    .extras-table td{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      border-top:none;
+    }
+    .extras-table td::before{
+      color:var(--mute-dim);
+      content:"Item";
+      flex-shrink:0;
+      font-family:'JetBrains Mono', monospace;
+      font-size:0.68rem;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .extras-table td:last-child::before{content:"Price";}
+    .hero-cta .btn{flex-basis:100%;}
+    .footer-links{gap:26px 34px;}
+    .footer-bottom{flex-direction:column; align-items:flex-start; gap:6px;}
   }
 </style>
 </head>
@@ -708,8 +709,17 @@
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-fill">Hire me on Fiverr</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#why">Why Drenasis</a>
+    <a href="#built-for">Work</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact" class="btn btn-fill">Hire me on Fiverr</a>
+  </div>
 </header>
 
 <main id="top">
@@ -719,31 +729,10 @@
       <div>
         <p class="eyebrow">Freelance web developer · Fiverr</p>
         <h1>Custom websites that <em>resize</em> as easily as they read.</h1>
-        <p class="lead">Drenasis builds modern, responsive websites in hand-coded HTML, CSS &amp; JavaScript for small businesses and creators — no drag-and-drop builders, no bloated themes, just a site built around what your business actually needs.</p>
+        <p class="lead">Drenasis builds modern, responsive websites in hand-coded HTML, CSS &amp; JavaScript for small businesses and creators with our sites being built around what your business actually needs.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn btn-fill">View my Fiverr gig →</a>
           <a href="#process" class="btn btn-outline">See how it works</a>
-        </div>
-      </div>
-
-      <div class="frame-stage">
-        <div class="frame-label mono"><span class="dot"></span> built responsive — every screen size</div>
-        <div class="device-frame" id="deviceFrame">
-          <div class="frame-chrome">
-            <span></span><span></span><span></span>
-            <span class="url">drenasis.studio</span>
-          </div>
-          <div class="frame-body">
-            <div class="frame-nav">
-              <div class="fn-logo"></div>
-              <div class="fn-links"><span></span><span></span><span></span></div>
-            </div>
-            <div class="frame-content">
-              <div class="fc-card"></div>
-              <div class="fc-card"></div>
-              <div class="fc-card"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -752,7 +741,7 @@
   <div class="stats">
     <div class="wrap">
       <div class="stat-item">
-        <div class="num">3–5</div>
+        <div class="num">5-7</div>
         <div class="desc">days avg. delivery</div>
       </div>
       <div class="stat-item">
@@ -775,7 +764,7 @@
       <div class="section-head reveal">
         <p class="eyebrow">What I build</p>
         <h2>Custom web development, written by hand.</h2>
-        <p>Every project starts from a blank file — not a template marketplace. That means the layout, copy and features all match your business, not a theme you're paying to undo.</p>
+        <p>Every project starts from a blank file. That means the layout, copy and features all match your business, not a theme you're paying to undo.</p>
       </div>
 
       <div class="services-grid">
@@ -942,7 +931,6 @@
             <li>Mobile &amp; desktop compatible</li>
             <li>Contact section or contact form</li>
             <li>Social media links</li>
-            <li>1 revision</li>
             <li>Delivery within 5–7 days</li>
           </ul>
           <a href="#" class="btn btn-outline">Get started →</a>
@@ -961,7 +949,6 @@
             <li>Contact form</li>
             <li>Social media integration</li>
             <li>Domain setup assistance</li>
-            <li>2 revisions</li>
             <li>Delivery within 5–7 days</li>
           </ul>
           <a href="#" class="btn btn-fill">Get started →</a>
@@ -981,7 +968,6 @@
             <li>Domain setup assistance</li>
             <li>Basic SEO setup</li>
             <li>Enhanced animations &amp; customisation</li>
-            <li>3 revisions</li>
             <li>Delivery within 7–14 days</li>
           </ul>
           <a href="#" class="btn btn-outline">Get started →</a>
@@ -1005,10 +991,6 @@
           <tr>
             <td>Priority delivery</td>
             <td>£20</td>
-          </tr>
-          <tr>
-            <td>Additional revision</td>
-            <td>£10</td>
           </tr>
           <tr>
             <td>Website updates</td>
@@ -1085,6 +1067,30 @@
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '☰';
+  }
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) closeMenu();
+  });
 </script>
 
 </body>
