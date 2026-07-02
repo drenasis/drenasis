@@ -33,11 +33,11 @@ const form = document.querySelector(".contact-form");
 const status = document.querySelector(".form-status");
 
 const messages = {
-  name: "Please enter your name.",
-  phone: "Please enter a valid phone number.",
-  email: "Please enter a valid email address.",
-  service: "Please choose a service.",
-  message: "Please add a short message about the job."
+  name: "Please add your name.",
+  phone: "Please add a phone number we can call.",
+  email: "Please add a valid email address.",
+  service: "Please choose the closest option.",
+  message: "Please add a short note about the job."
 };
 
 function setFieldState(field) {
@@ -77,6 +77,6 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  status.textContent = "Thanks. Your enquiry is ready to send and our team will respond shortly.";
+  status.textContent = "Thanks. We have your enquiry and will get back to you soon.";
   form.reset();
 });
