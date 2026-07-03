@@ -419,6 +419,37 @@
   .bf-text h3{font-size:1.05rem; margin-top:8px; margin-bottom:8px;}
   .bf-text p{color:var(--mute); font-size:0.88rem;}
 
+  /* ---------- portfolio ---------- */
+  .portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:24px;
+  }
+  .pf-card{
+    border-radius:var(--radius);
+    border:1px dashed var(--line);
+    overflow:hidden;
+    background:rgba(238,244,248,0.02);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .pf-card:hover{
+    border-color:rgba(247,135,25,0.4);
+    background:rgba(238,244,248,0.035);
+  }
+  .pf-thumb{
+    height:150px;
+    position:relative;
+    background:var(--navy-panel);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pf-thumb svg{width:34px; height:34px; opacity:0.35;}
+  .pf-text{padding:22px 22px 26px;}
+  .pf-text .tag{font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--mute-dim); text-transform:uppercase; letter-spacing:0.05em;}
+  .pf-text h3{font-size:1.05rem; margin-top:8px; margin-bottom:8px; color:var(--mute);}
+  .pf-text p{color:var(--mute-dim); font-size:0.88rem;}
+
   /* ---------- pricing ---------- */
   .pricing-grid{
     display:grid;
@@ -613,6 +644,7 @@
     .services-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
     .builtfor-grid{grid-template-columns:1fr;}
+    .portfolio-grid{grid-template-columns:1fr;}
     .stats .wrap{grid-template-columns:repeat(2, minmax(0, 1fr));}
     .process-item{grid-template-columns:50px minmax(0, 1fr); }
     .process-item p{grid-column:2 / 3;}
@@ -636,6 +668,7 @@
     .why-card{padding:26px 22px;}
     .process-item{padding:24px 0;}
     .builtfor-grid{gap:18px;}
+    .portfolio-grid{gap:18px;}
     .price-card{padding:28px 24px;}
     .pricing-grid{gap:18px;}
     .extras-table{font-size:0.9rem;}
@@ -705,6 +738,7 @@
       <a href="#process">Process</a>
       <a href="#why">Why Drenasis</a>
       <a href="#built-for">Work</a>
+      <a href="#portfolio">Portfolios</a>
       <a href="#pricing">Pricing</a>
     </div>
     <div class="nav-cta">
@@ -717,6 +751,7 @@
     <a href="#process">Process</a>
     <a href="#why">Why Drenasis</a>
     <a href="#built-for">Work</a>
+    <a href="#portfolio">Portfolios</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact" class="btn btn-fill">Hire me on Fiverr</a>
   </div>
@@ -762,7 +797,7 @@
   <section id="services">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">What I build</p>
+        <p class="eyebrow">What we build</p>
         <h2>Custom websites, written by hand.</h2>
         <p>We build websites that are fast, easy to use, and designed around your business.</p>
       </div>
@@ -776,7 +811,7 @@
         <div class="service-card reveal">
           <span class="service-tag">Creators</span>
           <h3>Portfolios &amp; Landing Pages</h3>
-          <p>Single-focus pages built to introduce your work and convert visitors into followers, clients or customers.</p>
+          <p>Single-focus pages built to introduce your work and help people find your business and get in touch.</p>
         </div>
         <div class="service-card reveal">
           <span class="service-tag">Small business</span>
@@ -904,6 +939,60 @@
             <span class="tag">Local services</span>
             <h3>Trades &amp; service businesses</h3>
             <p>Clear service breakdowns, contact details and reviews up front, so enquiries turn into bookings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Portfolios</p>
+        <h2>Sites we've built.</h2>
+        <p>A growing collection of projects delivered through Drenasis. Real work, coming soon.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <!--
+          PORTFOLIO CARD TEMPLATE - duplicate this block for each project
+          and swap the placeholder contents below:
+
+          <div class="pf-card reveal">
+            <div class="pf-thumb">
+              <img src="path/to/screenshot.jpg" alt="Project name" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="pf-text">
+              <span class="tag">Category / industry</span>
+              <h3>Project name</h3>
+              <p>Short one-line description of the site and what it does.</p>
+            </div>
+          </div>
+        -->
+          <a href="https://gamedev-website.pages.dev" target="_blank" rel="noopener noreferrer">
+        <div class="pf-card reveal">
+          <div class="pf-thumb">
+            <img height="150px" src="gamedev-screenshot.png" alt="Website for Game Developer">
+          </div>
+          <div class="pf-text">
+            <span class="tag">Software Development</span>
+            <h3>Project GameDev</h3>
+            <p>A website for a game developer.</p>
+          </div>
+        </div>
+          </a>
+        <div class="pf-card reveal">
+          <div class="pf-thumb">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 6.5h.01M9 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pf-text">
+            <span class="tag">Coming soon</span>
+            <h3>Project two</h3>
+            <p>A new project will be added here shortly.</p>
           </div>
         </div>
       </div>
@@ -1039,6 +1128,7 @@
           <a href="#process">Process</a>
           <a href="#why">Why Drenasis</a>
           <a href="#built-for">Work</a>
+          <a href="#portfolio">Portfolios</a>
           <a href="#pricing">Pricing</a>
         </div>
         <div class="footer-col">
